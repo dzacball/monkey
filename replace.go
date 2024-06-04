@@ -1,6 +1,7 @@
 package monkey
 
 import (
+	"fmt"
 	"reflect"
 	"syscall"
 	"unsafe"
@@ -21,6 +22,7 @@ func pageStart(ptr uintptr) uintptr {
 // from is a pointer to the actual function
 // to is a pointer to a go funcvalue
 func replaceFunction(from, to uintptr) (original []byte) {
+	fmt.Printf("jmp elott")
 	jumpData := jmpToFunctionValue(to)
 	f := rawMemoryAccess(from, len(jumpData))
 	original = make([]byte, len(f))

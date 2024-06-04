@@ -1,8 +1,13 @@
 package monkey
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 func jmpToFunctionValue(double uintptr) []byte {
+	fmt.Printf("jmp az armban")
+
 	res := make([]byte, 0, 24)
 	d0d1 := double & 0xFFFF
 	d2d3 := double >> 16 & 0xFFFF
